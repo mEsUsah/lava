@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LavaController;
 use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,20 +20,17 @@ Route::get('/', function () {
     return view('sections.home', [
         "handle" => "home"
     ]);
+})->middleware('auth');
+
+Route::get('/users', [UsersController::class, 'index'])->middleware('auth');
+
+Route::get('/accounts', [AccountsController::class, 'index'])->middleware('auth');
+Route::post('/accounts', [AccountsController::class, 'create'])->middleware('auth');
+
+Route::get('/login_now', function (){
+    return view('sections.login');
 });
 
-Route::get('/users', function () {
-    return view('sections.users', [
-        "handle" => "users"
-    ]);
-});
-
-Route::get('/accounts', [AccountsController::class, 'index']);
-Route::post('/accounts', [AccountsController::class, 'create']);
-
-Route::get('/lava', function (){
-    return view('landing');
-});
 Route::get('/ctrl', function (){
     $returnvalue = LavaController::show();
     return $returnvalue;
@@ -44,3 +42,7 @@ Route::get('/add-tree', function (){
 Route::get('/trees', function (){
     return LavaController::getTrees();
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

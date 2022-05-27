@@ -7,7 +7,7 @@
     <title>🚧 Lava - @yield('title')</title>
     <link rel="stylesheet" href="css/app.css">
 </head>
-<body>
+<body class="app__body">
     @include('partials.sidebar')
     @yield('content')
     <script src="js/app.js"></script>
