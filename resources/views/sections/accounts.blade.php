@@ -3,7 +3,6 @@
 
 @section('content')
     <div class="container">
-        
         <h2>Add account:</h2>
         <form action="/accounts" method="post">
             @csrf
@@ -33,7 +32,7 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
+                    <th scope="col">Account Name</th>
                     <th scope="col">User</th>
                 </tr>
             </thead>
@@ -42,7 +41,7 @@
                     <tr>
                         <th scope="row">{{ $account->id }}</th>
                         <td>{{ $account->name }}</td>
-                        <td>{{ $account->user_id }}</td>
+                        <td>{{ $account->user_name }}</td>
                     </tr>
                 @endforeach
             </tbody>

@@ -19,7 +19,10 @@ class AccountsController extends Controller
     public function index()
     {
         $users = DB::table('users')->get(['id','name']);
-        $accounts = DB::table('accounts')->get();
+        $accounts = DB::table('accounts')
+            ->join('users','accounts.user_id','=',"users.id")
+            ->select('accounts.*','users.name as user_name',)
+            ->get();
         return view('sections.accounts',[
             "handle" => "accounts",
             "accounts" => $accounts,
