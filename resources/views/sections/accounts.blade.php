@@ -14,11 +14,16 @@
             </div>
 
             <div class="row mb-3">
-                <label for="accountId" class="form-label">User</label>
-                <input type="number" name="user" class="form-control" id="accountId">
+                <label for="accountId" class="form-label" id="accountId">User</label>
+                <select name="user" class="form-select" aria-label="Default select example">
+                    <option selected>Select user</option>
+                    @foreach ($users as $user)
+                        <option value="{{ $user->id }}">{{ $user->name }}</option>  
+                    @endforeach
+                </select>
                 <div id="accountIdHelp" class="form-text">ID of user who owns the account</div>
             </div>
-            
+
             <button type="submit" class="btn btn-primary"><i class="bi bi-plus"></i> Add</button>
         </form>
 
