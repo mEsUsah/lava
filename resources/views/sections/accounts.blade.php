@@ -15,7 +15,7 @@
 
             <div class="row mb-3">
                 <label for="accountId" class="form-label" id="accountId">User</label>
-                <select name="user" class="form-select" aria-label="Default select example">
+                <select name="user_id" class="form-select" aria-label="Default select example">
                     <option selected>Select user</option>
                     @foreach ($users as $user)
                         <option value="{{ $user->id }}">{{ $user->name }}</option>  
@@ -42,7 +42,7 @@
                     <tr>
                         <th scope="row">{{ $account->id }}</th>
                         <td>{{ $account->name }}</td>
-                        <td>{{ $account->user }}</td>
+                        <td>{{ $account->user_id }}</td>
                     </tr>
                 @endforeach
             </tbody>

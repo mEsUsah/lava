@@ -30,7 +30,7 @@ class AccountsController extends Controller
     public function create(Request $request){
         $account = new Account;
         $account->name = $request->input('name');
-        $account->user = $request->input('user');
+        $account->user_id = $request->input('user_id');
         $account->save();
         return redirect("/accounts");
     }
