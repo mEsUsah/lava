@@ -9,13 +9,17 @@
 
             <div class="row mb-3">
                 <label for="user_name" class="form-label">Account (owner)</label>
-                <select name="account_id" class="form-select" id="accountId" aria-label="Default select example">
-                    <option selected>Select Account (owner)</option>
+                <select name="account_id" class="form-select @error('account_id') is-invalid @enderror" id="accountId" aria-label="Default select example">
+                    <option selected>Select Account</option>
                     @foreach ($accounts as $account)
                         <option value="{{ $account->id }}">{{ $account->user_name }}</option>  
                     @endforeach
                 </select>
-                <div id="accountIdHelp" class="form-text">Account belonging to selected user</div>
+                @error('account_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong> {{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
 
             <div class="row mb-3">
@@ -34,17 +38,24 @@
             </div>
 
             <div class="row mb-3">
-                <label for="ammount" class="form-label">Ammount</label>
-                <input type="number" name="ammount" class="form-control" id="ammount">
+                <label for="ammount" class="form-label">Ammount:</label>
+                <input type="number" name="ammount" class="form-control @error('ammount') is-invalid @enderror" id="ammount" value="{{ old('ammount') }}">
+                @error('ammount')
+                    <span class="invalid-feedback" role="alert">
+                        <strong> {{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
 
             <div class="row mb-3">
-                <label for="accountName" class="form-label">Comment</label>
-                <input type="text" name="comment" class="form-control" id="accountName">
-                <div id="accountNameHelp" class="form-text">What / Why</div>
+                <label for="accountName" class="form-label">Comment: <span class="form-text">What / Why</span></label>
+                <input type="text" name="comment" class="form-control @error('comment') is-invalid @enderror" id="accountName">
+                @error('comment')
+                    <span class="invalid-feedback" role="alert">
+                        <strong> {{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
-
-            
 
             <button type="submit" class="btn btn-primary"><i class="bi bi-plus"></i> Add</button>
         </form>
