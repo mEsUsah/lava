@@ -23,6 +23,12 @@
                 Accounts
             </a>
         </li>
+        <li>
+            <a href="/transactions" class="nav-link {{ $handle == "transactions" ? "active" : "text-white" }}">
+                <i class="bi bi-arrow-left-right"></i>
+                Transactions
+            </a>
+        </li>
     </ul>
     <hr>
     <div class="dropdown">
