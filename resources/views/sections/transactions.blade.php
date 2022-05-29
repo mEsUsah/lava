@@ -8,11 +8,15 @@
             @csrf
 
             <div class="row mb-3">
-                <label for="user_name" class="form-label">Account (owner)</label>
+                <label for="user_name" class="form-label">Account</label>
                 <select name="account_id" class="form-select @error('account_id') is-invalid @enderror" id="accountId" aria-label="Default select example">
-                    <option selected>Select Account</option>
+                    <option>Select Account</option>
                     @foreach ($accounts as $account)
-                        <option value="{{ $account->id }}">{{ $account->user_name }}</option>  
+                        @if (old('account_id') == $account->id)
+                            <option value="{{ $account->id }}" selected>{{ $account->name }} ( {{ $account->user_name }} )</option>  
+                        @else
+                            <option value="{{ $account->id }}">{{ $account->name }} ( {{ $account->user_name }} )</option>  
+                        @endif
                     @endforeach
                 </select>
                 @error('account_id')
