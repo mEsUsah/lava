@@ -26,10 +26,11 @@ class UsersController extends Controller
      */
     protected function create(Request $request)
     {
+        $test = $request;
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'required_with:password-confirm', 'min:8',],
         ]);
 
         $user = new User;
