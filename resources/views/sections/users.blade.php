@@ -5,7 +5,7 @@
     <div class="container">
 
         <h2>Add user:</h2>
-        <form method="POST" action="/users/create">
+        <form method="POST" action="/users">
             @csrf
             <div class="row mb-3">
                 <label for="name" class="col-md-12 form-label">Name</label>
