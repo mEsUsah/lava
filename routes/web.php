@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LavaController;
 use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\UsersController;
 
 /*
@@ -27,6 +28,9 @@ Route::post('/users/create', [UsersController::class, 'create'])->middleware('au
 
 Route::get('/accounts', [AccountsController::class, 'index'])->middleware('auth');
 Route::post('/accounts', [AccountsController::class, 'create'])->middleware('auth');
+
+Route::get('/transactions', [TransactionsController::class, 'index'])->middleware('auth');
+Route::post('/transactions', [TransactionsController::class, 'create'])->middleware('auth');
 
 Route::get('/login_now', function (){
     return view('sections.login');
