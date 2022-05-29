@@ -24,7 +24,7 @@ Route::get('/', function () {
 })->middleware('auth');
 
 Route::get('/users', [UsersController::class, 'index'])->middleware('auth');
-Route::post('/users/create', [UsersController::class, 'create'])->middleware('auth');
+Route::post('/users', [UsersController::class, 'create'])->middleware('auth');
 
 Route::get('/accounts', [AccountsController::class, 'index'])->middleware('auth');
 Route::post('/accounts', [AccountsController::class, 'create'])->middleware('auth');
